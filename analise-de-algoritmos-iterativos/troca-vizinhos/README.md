@@ -21,8 +21,6 @@ Seja $n$ o tamanho do array `array`.
 | `array[i] = array[i + 1];` | $c_5$ | $\frac{n}{2}$ |
 | `array[i + 1] = aux;` | $c_6$ | $\frac{n}{2}$ |
 
-*(Nota: Assumimos $\frac{n}{2}$ na tabela para simplificar a prova analítica, representando o comportamento assintótico onde a divisão inteira (piso) dita o custo).*
-
 ### 2. Montando a Equação
 
 Somando os custos e repetições de cada linha:
