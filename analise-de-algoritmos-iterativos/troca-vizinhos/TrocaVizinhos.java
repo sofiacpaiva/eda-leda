@@ -1,4 +1,4 @@
-public class troca_vizinhos {
+public class TrocaVizinhos {
     public static void trocaVizinhos(int[] array) {
         // o i é acrescentado 2 unidades de cada vez, para que, assim, apenas vizinhos pares sejam
         // trocados
