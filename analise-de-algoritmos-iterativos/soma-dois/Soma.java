@@ -1,5 +1,5 @@
 
-public class soma {
+public class Soma {
     public int[] two_sum(int[] v, int target) {
         int[] array = new int[2];
         for (int i = 0; i < v.length; i++) {
