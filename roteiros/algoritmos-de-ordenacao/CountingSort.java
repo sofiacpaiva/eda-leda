@@ -43,6 +43,7 @@ public class CountingSort implements Sorting {
         return B;
     }
 
+    
     public static int[] countingComRepeticao(int[] A, int k) {
         int[] C = new int[k];
         // frequencia
