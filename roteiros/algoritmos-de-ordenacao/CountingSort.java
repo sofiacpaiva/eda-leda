@@ -1,9 +1,5 @@
-public class CountingSort implements Sorting {
+public class CountingSort {
 
-    @Override
-    public void sort(int[] elements) {
-
-    }
 
     //* O Counting Sort simples é um algoritmo de ordenação
     // n+k, em que o n é o tamanho do array a ser ordenado e 

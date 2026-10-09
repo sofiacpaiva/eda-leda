@@ -1,9 +1,4 @@
-public class Selection implements Sorting{
-    @Override
-    public void sort(int[] elements) {
-
-    }
-}
+public class Selection {
     
 
     // @Override
@@ -19,6 +14,6 @@ public class Selection implements Sorting{
     //     }
 
     // }
-
+}
 
 
