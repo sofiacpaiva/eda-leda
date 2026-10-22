@@ -1,22 +1,16 @@
-public class QuickSort implements Sorting {
+public class QuickSort   {
 
-    @Override
-    public void sort (int[] elements) {
-
-
-    }
-
-    public int particionamento(int[] v, int left, int right) {
-        int pivot = v[left];
-        int i = left;
+    public int particionamento(int[] v, int ini, int fim) {
+        int pivot = v[ini];
+        int i = ini;
     
-        for (int j = left+1; j < right; j++) {
+        for (int j = ini+1; j < fim; j++) {
             if (v[j] <= pivot) {
                 i++;
                 swap(v, i, j);
             }
         }
-        swap(v, left, i);
+        swap(v, ini, i);
 
         return i;
     }

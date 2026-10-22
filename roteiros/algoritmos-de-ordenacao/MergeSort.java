@@ -144,7 +144,7 @@ public class MergeSort {
                 v[k++] = helper[j++];
             }
         }
-        while ( i < middleHelper) {
+        while ( i <= middleHelper) {
             v[k++] = helper[i++];
         }
 

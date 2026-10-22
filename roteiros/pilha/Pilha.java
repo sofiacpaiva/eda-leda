@@ -1,4 +1,7 @@
 package roteiros.pilha;
+import java.util.Arrays;
+import java.util.Scanner;
+
 
 public class Pilha {
     private int[] p;
@@ -50,25 +53,27 @@ public class Pilha {
     // detalhada. Não é permitido iterar diretamente sobre o array ou criar arrays. Crie outra pilha, se preciso. Use as operações push, pop,
     // isEmpty etc. 
     public String toString() {
-        String saida = "";
+        int[] saida = new int[size()];
 
         if (isEmpty()) 
             return "";
 
-        Pilha aux = new Pilha(tail+1);
+        Pilha aux = new Pilha(size());
 
-        for (int i = 0; i < tail+1; i++) {
-            aux.push(this.pop());
-        }
-        for (int i = 0; i < tail+1; i++) {
-            if (i == tail) {
-                saida += (aux.pop());
-                break;
-            }
-            saida += (aux.pop()) + ", ";
+        while (!isEmpty()) {
+            aux.push(this.pop());    
         }
 
-        return saida;
+        int i = 0;
+        while (!aux.isEmpty()) {
+            int e = aux.pop();
+            saida[i++] = e;
+            push(e);
+        }
+
+
+
+        return Arrays.toString(saida);
         
     //TODO: ARRUMAR ESSE BAGULHO AQUI EM RELACAO AO TAIL DA PILHA DA CLASSE
 
@@ -82,13 +87,13 @@ public class Pilha {
     }
 
     public int size() {
-        // TODO
-        return 0;
+        return tail+1;
     }
 
     public int lastIndexOf(int i) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'lastIndexOf'");
     }
+
 
 }
