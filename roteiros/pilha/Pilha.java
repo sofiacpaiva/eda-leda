@@ -1,5 +1,6 @@
 package roteiros.pilha;
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 
@@ -35,7 +36,7 @@ public class Pilha {
     // deve lançar exceção caso a pilha esteja vazia.
     public int pop() {
         if (isEmpty()) 
-            throw new StackOverflowError("a pilha está vazia");
+            throw new NoSuchElementException("a pilha está vazia");
 
         return p[tail--];
     }
@@ -43,7 +44,7 @@ public class Pilha {
     // deve lançar exceção caso a pilha esteja vazia.
     public int peek() {
         if (isEmpty()) 
-            throw new StackOverflowError("a pilha está vazia");
+            throw new NoSuchElementException("a pilha está vazia");
 
         return p[tail];
     }
@@ -71,11 +72,8 @@ public class Pilha {
             push(e);
         }
 
-
-
         return Arrays.toString(saida);
         
-    //TODO: ARRUMAR ESSE BAGULHO AQUI EM RELACAO AO TAIL DA PILHA DA CLASSE
 
     }
     
@@ -83,6 +81,34 @@ public class Pilha {
     // Não é permitido iterar diretamente sobre o array. Use as operações push, pop,
     // isEmpty etc.
     public int indexOf(int valor) {
+        if (isEmpty()) {
+            throw new NoSuchElementException("a pilha está vazia");
+        }
+
+        Pilha aux = new Pilha(size());
+
+        int idx = 0;
+        boolean isFound = false;
+
+        while (!isEmpty()) {
+            int e = this.pop();
+            aux.push(e);
+        }
+
+        while(!aux.isEmpty()) {
+            int e = aux.pop();
+            push(e);
+            if (e == valor) {
+                isFound = true;
+                }
+            if (!isFound) {
+                idx+=1;
+            }
+        }
+    
+        if (isFound) {
+            return idx;
+        }
         return -1;
     }
 
@@ -91,8 +117,35 @@ public class Pilha {
     }
 
     public int lastIndexOf(int i) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'lastIndexOf'");
+        if (isEmpty()) {
+            throw new NoSuchElementException("a pilha está vazia");
+        }
+
+        Pilha aux = new Pilha(size());
+
+        int idx = size()-1;
+        boolean isFound = false;
+
+        while (!isEmpty()) {
+            int e = this.pop();
+            aux.push(e);
+            if (e == i) {
+                isFound = true;
+            }
+            if (!isFound) {
+                idx -= 1;
+            }
+        }
+
+        while(!aux.isEmpty()) {
+            push(aux.pop());
+        }
+
+        if (isFound) {
+            return idx;
+        }
+
+        return -1;
     }
 
 
