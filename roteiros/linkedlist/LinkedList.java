@@ -313,6 +313,7 @@ public class LinkedList {
     // algoritmo deve ser O(1), já que os nós a trocar são recebidos como
     // parâmetro (ou seja, não é permitido percorrer a lista para achá-los).
     public void swap(Node n1, Node n2) {
+  
     }
 
     // inverte a lista: tail passa a ser head, o elemento anterior ao tail
