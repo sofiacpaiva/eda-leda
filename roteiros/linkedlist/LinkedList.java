@@ -246,13 +246,66 @@ public class LinkedList {
     // move o elemento que está na posição index para a cabeça da lista.
     // a busca pelo elemento é O(n), mas a movimentação em si deve ser O(1),
     // ou seja, feita só manipulando referências.
+
+    //* casos a se pensar: 
+    // 1. mover o elemento que já é o head
+    // 2. mover o último elemento
+    // 3. esquecimento do aux.prev = null */
+
     public void moveToHead(int index) {
+
+        if (index == 0) { 
+            return;
+        }
+
+        Node aux = head;
+        for (int i = 0; i < index; i++) {
+            aux = aux.next;
+        }
+
+        // removendo o nó dali
+        if (aux == tail) {   // verificando se é o último elemento para atualizar o tail
+            tail = aux.prev;
+            tail.next = null;
+        } else {
+            aux.prev.next = aux.next;
+            aux.next.prev = aux.prev;
+        }
+
+        // realocando para o começo
+        aux.next = head;
+        aux.prev = null; //o novo head obriatoriamente tem prev = null
+        head.prev = aux;
+        head = aux;
+
     }
 
     // dado que a lista já está em ordem crescente, insere v no lugar certo
     // para que a lista continue ordenada depois da inserção. se já houver
     // elementos iguais a v na lista, insira v depois deles.
     public void insereOrdenado(int v) {
+
+        if (isEmpty() || v >= tail.value) {
+            addLast(v);
+            return;
+        }
+        if (v < head.value) {
+            addFirst(v);
+            return;
+        }
+
+        Node aux = tail;
+        while (aux != null && aux.value > v) {
+            aux = aux.prev;   
+        }
+
+        Node newNode = new Node(v);
+        newNode.next = aux.next;
+        newNode.prev = aux;
+        aux.next.prev = newNode;
+        aux.next = newNode;
+
+        size += 1;
     }
 
     // troca n1 e n2 de posição na lista. não é permitido trocar os valores
